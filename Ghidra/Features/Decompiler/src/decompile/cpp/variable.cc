@@ -389,7 +389,7 @@ Varnode *HighVariable::getTypeRepresentative(void) const
       if (vn->isTypeLock())
 	rep = vn;
     }
-    else if (0>vn->getType()->typeOrderBool(*rep->getType()))
+    else if (0>vn->getType()->typeOrderFormal(*rep->getType()))
       rep = vn;
   }
   return rep;
