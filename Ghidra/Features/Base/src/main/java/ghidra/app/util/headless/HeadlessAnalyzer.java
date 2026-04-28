@@ -30,6 +30,7 @@ import ghidra.GhidraJarApplicationLayout;
 import ghidra.app.plugin.core.analysis.AutoAnalysisManager;
 import ghidra.app.plugin.core.osgi.BundleHost;
 import ghidra.app.script.*;
+import ghidra.app.script.JythonStubScriptProvider.JythonStubException;
 import ghidra.app.util.headless.HeadlessScript.HeadlessContinuationOption;
 import ghidra.app.util.importer.ProgramLoader;
 import ghidra.app.util.opinion.*;
@@ -960,7 +961,13 @@ public class HeadlessAnalyzer {
 		}
 		catch (Exception exc) {
 			String logErrorMsg = "REPORT SCRIPT ERROR: " + scriptName + " : " + exc.getMessage();
-			Msg.error(this, logErrorMsg, exc);
+			if (exc instanceof JythonStubException) {
+				Msg.error(this, logErrorMsg);
+				System.exit(1);
+			}
+			else {
+				Msg.error(this, logErrorMsg, exc);
+			}
 		}
 
 		return retOption;
