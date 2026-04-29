@@ -21,8 +21,8 @@ import javax.swing.*;
 
 import org.junit.Test;
 
-import docking.widgets.combobox.GhidraComboBox;
-import ghidra.app.plugin.core.label.*;
+import ghidra.app.plugin.core.label.LabelHistoryDialog;
+import ghidra.app.plugin.core.label.LabelHistoryInputDialog;
 import ghidra.app.util.*;
 import ghidra.program.model.address.*;
 import ghidra.program.model.symbol.LabelHistory;
@@ -83,22 +83,6 @@ public class LabelMgrPluginScreenShots extends GhidraScreenShotGenerator {
 		});
 		waitForDialogComponent(NamespaceChooserDialog.class);
 		captureDialog();
-	}
-
-	@Test
-	public void testSetLabel() {
-		LabelMgrPlugin plugin = getPlugin(tool, LabelMgrPlugin.class);
-		final OperandLabelDialog dialog = new OperandLabelDialog(plugin);
-		final GhidraComboBox<?> combo = (GhidraComboBox<?>) getInstanceField("myChoice", dialog);
-		runSwing(new Runnable() {
-			@Override
-			public void run() {
-				dialog.setTitle("Set Label at 004a671");
-				combo.setSelectedItem("LAB_0040a671");
-			}
-		});
-		showDialogWithoutBlocking(tool, dialog);
-		captureDialog(350, 116);
 	}
 
 	@Test
