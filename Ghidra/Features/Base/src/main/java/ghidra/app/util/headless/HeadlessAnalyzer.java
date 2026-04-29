@@ -959,15 +959,17 @@ public class HeadlessAnalyzer {
 				}
 			}
 		}
+		catch (JythonStubException e) {
+			// We want to effectively exit with an error code, but this class may be used as a 
+			// Ghidra library method in some scenarios, so System.exit(1) is too aggressive.
+			// Throwing an Error allows Ghidra to exit with an uncaught exception when run from
+			// the command line, but allows for the possibility of a library client to handle
+			// the problem in a way that better suits their application.
+			throw new Error(e);
+		}
 		catch (Exception exc) {
 			String logErrorMsg = "REPORT SCRIPT ERROR: " + scriptName + " : " + exc.getMessage();
-			if (exc instanceof JythonStubException) {
-				Msg.error(this, logErrorMsg);
-				System.exit(1);
-			}
-			else {
-				Msg.error(this, logErrorMsg, exc);
-			}
+			Msg.error(this, logErrorMsg, exc);
 		}
 
 		return retOption;
