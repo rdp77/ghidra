@@ -568,7 +568,8 @@ public class DefaultGraphDisplay implements GraphDisplay {
 	}
 
 	private void createAndDisplaySubGraph() {
-		GraphDisplay display = graphDisplayProvider.getGraphDisplay(false, TaskMonitor.DUMMY);
+		GraphDisplay display =
+			graphDisplayProvider.getGraphDisplay(false, false, TaskMonitor.DUMMY);
 		try {
 			display.setGraph(createSubGraph(), graphRenderer.getGraphDisplayOptions(),
 				title + " - Sub-graph", false, TaskMonitor.DUMMY);
@@ -1065,7 +1066,8 @@ public class DefaultGraphDisplay implements GraphDisplay {
 	public void setGraph(AttributedGraph graph, GraphDisplayOptions options, String title,
 			boolean append, TaskMonitor monitor) {
 		setGraphDisplayOptions(options);
-		if (append && Objects.equals(title, this.title) && this.graph != null) {
+		if (append && this.graph != null &&
+			graph.getGraphType().equals(this.graph.getGraphType())) {
 			graph = mergeGraphs(graph, this.graph);
 		}
 
