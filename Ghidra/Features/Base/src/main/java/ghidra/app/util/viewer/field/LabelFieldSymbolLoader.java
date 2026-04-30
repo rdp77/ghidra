@@ -68,25 +68,37 @@ public class LabelFieldSymbolLoader {
 			return;
 		}
 
+		boolean showPrimary = !ignoreSymbol(primary);
+		int remaining = showPrimary ? max - 1 : max;
+
 		while (it.hasNext()) {
 			Symbol s = it.next();
 			if (s.isPrimary()) {
 				continue;
 			}
 
-			if ((max - 1) == symbols.size()) { // -1 to save space for primary
+			if (remaining == symbols.size()) {
 				hasMore = true;
 				break;
 			}
 
-			if (s instanceof FunctionSymbol && !displayFunctionLabel) {
+			if (ignoreSymbol(s)) {
 				continue;
 			}
 
 			symbols.add(s);
 		}
 
-		symbols.add(primary);
+		if (showPrimary) {
+			symbols.add(primary);
+		}
+	}
+
+	private boolean ignoreSymbol(Symbol s) {
+		if (s instanceof FunctionSymbol) {
+			return !displayFunctionLabel;
+		}
+		return false;
 	}
 
 	private void gatherOffcutSymbols(CodeUnit cu, int max) {
