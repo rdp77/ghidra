@@ -1,0 +1,581 @@
+# Instincts generated from https://github.com/rdp77/ghidra
+# Generated: 2026-05-27T18:42:12.253Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: ghidra-commit-ticket-ref
+trigger: "when writing a commit message"
+confidence: 0.75
+domain: git
+source: repo-analysis
+source_repo: https://github.com/rdp77/ghidra
+---
+
+# Ghidra Commit Ticket Ref
+
+## Action
+
+Include ticket reference matching pattern: ^([A-Z]+-\d+)
+
+## Evidence
+
+- Ticket pattern detected in commits
+- Pattern: ^([A-Z]+-\d+)
+
+---
+id: ghidra-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/rdp77/ghidra
+---
+
+# Ghidra Commit Length
+
+## Action
+
+Write moderate-length commit messages (~50 characters)
+
+## Evidence
+
+- Average commit message length: 50 chars
+- Based on 23 commits
+
+---
+id: ghidra-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/rdp77/ghidra
+---
+
+# Ghidra Naming Files
+
+## Action
+
+Use PascalCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: PascalCase
+
+---
+id: ghidra-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/rdp77/ghidra
+---
+
+# Ghidra Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: ghidra-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/rdp77/ghidra
+---
+
+# Ghidra Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: ghidra-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/rdp77/ghidra
+---
+
+# Ghidra Test Naming
+
+## Action
+
+Name test files using the pattern: *.test.ts
+
+## Evidence
+
+- File pattern: *.test.ts
+- Consistent across test files
+
+---
+id: ghidra-workflow-fixing-typos-in-source-files
+trigger: "when doing fixing typos in source files"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/rdp77/ghidra
+---
+
+# Ghidra Workflow Fixing Typos In Source Files
+
+## Action
+
+Follow the fixing-typos-in-source-files workflow:
+1. Identify the typo in the source file.
+2. Edit the file to correct the typo.
+3. Commit the change with a message referencing the typo fix.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: Ghidra/Features/VersionTracking/src/main/java/ghidra/feature/vt/api/markuptype/VTMarkupType.java, Ghidra/Features/Base/src/main/java/ghidra/plugins/importer/batch/BatchImportDialog.java
+
+---
+id: ghidra-workflow-test-fix-and-merge
+trigger: "when doing test fix and merge"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/rdp77/ghidra
+---
+
+# Ghidra Workflow Test Fix And Merge
+
+## Action
+
+Follow the test-fix-and-merge workflow:
+1. Identify failing or outdated test.
+2. Edit the test file to fix the issue.
+3. Commit the fix with a message referencing the test.
+4. Merge the fix into the patch branch.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: Ghidra/Features/SystemEmulation/src/test/java/ghidra/pcode/emu/sys/EmuAmd64SyscallUseropLibraryTest.java, Ghidra/Test/DebuggerIntegrationTest/src/test.slow/java/agent/lldb/rmi/LldbHooksTest.java
+
+---
+id: ghidra-workflow-feature-refactor-or-interface-addition
+trigger: "when doing feature refactor or interface addition"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/rdp77/ghidra
+---
+
+# Ghidra Workflow Feature Refactor Or Interface Addition
+
+## Action
+
+Follow the feature-refactor-or-interface-addition workflow:
+1. Create or refactor interface/service Java files.
+2. Update related implementation files.
+3. Commit the changes with a reference to the feature or refactor.
+4. Merge the branch into the main or patch branch.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: Ghidra/Debug/Debugger-api/src/main/java/ghidra/app/services/DebuggerStaticMappingService.java, Ghidra/Debug/Debugger-api/src/main/java/ghidra/debug/api/modules/DebuggerAddressTranslator.java, Ghidra/Debug/Debugger/src/main/java/ghidra/app/plugin/core/debug/service/modules/DebuggerStaticMappingContext.java
+
+---
+id: ghidra-workflow-compression-or-serialization-improvement
+trigger: "when doing compression or serialization improvement"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/rdp77/ghidra
+---
+
+# Ghidra Workflow Compression Or Serialization Improvement
+
+## Action
+
+Follow the compression-or-serialization-improvement workflow:
+1. Edit Java files related to compression or serialization.
+2. Update or add relevant documentation (e.g., README).
+3. Commit the changes.
+4. Merge the branch into the main or patch branch.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: Ghidra/Features/FileFormats/src/main/java/ghidra/file/formats/zlib/ZLIB.java, Ghidra/Framework/FileSystem/data/serialFilterREADME.md, Ghidra/Framework/FileSystem/src/main/java/ghidra/framework/remote/GhidraObjectInputFilter.java
+
+---
+id: ghidra-workflow-merge-feature-or-fix-branch
+trigger: "when doing merge feature or fix branch"
+confidence: 0.7
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/rdp77/ghidra
+---
+
+# Ghidra Workflow Merge Feature Or Fix Branch
+
+## Action
+
+Follow the merge-feature-or-fix-branch workflow:
+1. Complete feature or fix in a dedicated branch.
+2. Open a merge request or perform the merge.
+3. Resolve any conflicts.
+4. Commit the merge with a message referencing the branch.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~4x per month
+- Files: Varies, but typically includes files touched in the feature/fix branch and the corresponding merge commit.
+
+---
+id: ghidra-instinct-file-naming
+trigger: "When creating or renaming a Java file"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct File Naming
+
+## Action
+
+Use PascalCase for file names
+
+## Evidence
+
+- Pattern in files: Ghidra/Features/VersionTracking/src/main/java/ghidra/feature/vt/api/markuptype/VTMarkupType.java
+- Pattern in files: Ghidra/Features/Base/src/main/java/ghidra/plugins/importer/batch/BatchImportDialog.java
+
+---
+id: ghidra-instinct-function-naming
+trigger: "When defining a new function or method in Java"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Function Naming
+
+## Action
+
+Use camelCase for function names
+
+## Evidence
+
+- Pattern in Java source files across Ghidra/Features and Ghidra/Debug
+
+---
+id: ghidra-instinct-class-naming
+trigger: "When defining a new Java class"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Class Naming
+
+## Action
+
+Use PascalCase for class names
+
+## Evidence
+
+- Pattern in files: Ghidra/Debug/Debugger-api/src/main/java/ghidra/app/services/DebuggerStaticMappingService.java
+
+---
+id: ghidra-instinct-constant-naming
+trigger: "When defining a constant in Java"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Constant Naming
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for constant names
+
+## Evidence
+
+- Pattern in Java source files
+
+---
+id: ghidra-instinct-import-style
+trigger: "When importing modules in Java"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Import Style
+
+## Action
+
+Use relative imports
+
+## Evidence
+
+- Pattern in Java source files
+
+---
+id: ghidra-instinct-export-style
+trigger: "When exporting classes or interfaces in Java"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Export Style
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in Java source files
+
+---
+id: ghidra-instinct-test-file-location
+trigger: "When adding or updating tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Test File Location
+
+## Action
+
+Place test files in mixed locations, typically under src/test/java or similar test directories
+
+## Evidence
+
+- Pattern in files: Ghidra/Features/SystemEmulation/src/test/java/ghidra/pcode/emu/sys/EmuAmd64SyscallUseropLibraryTest.java
+- Pattern in files: Ghidra/Test/DebuggerIntegrationTest/src/test.slow/java/agent/lldb/rmi/LldbHooksTest.java
+
+---
+id: ghidra-instinct-test-type
+trigger: "When writing tests"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Test Type
+
+## Action
+
+Write unit tests as the primary test type
+
+## Evidence
+
+- testTypes: ["unit"]
+
+---
+id: ghidra-instinct-test-file-pattern
+trigger: "When naming test files (TypeScript/JavaScript)"
+confidence: 0.6
+domain: testing
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Test File Pattern
+
+## Action
+
+Use the *.test.ts pattern
+
+## Evidence
+
+- filePattern: *.test.ts
+
+---
+id: ghidra-instinct-commit-format-ticket
+trigger: "When writing a commit message for a feature or fix"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Commit Format Ticket
+
+## Action
+
+Prefix the message with the ticket number if available (e.g., GP-6809: ...)
+
+## Evidence
+
+- Seen in commit: GP-6809: Factor a DebuggerStaticMapper interface.
+- ticketPattern: ^([A-Z]+-\d+)
+
+---
+id: ghidra-instinct-commit-format-merge
+trigger: "When merging a branch"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Commit Format Merge
+
+## Action
+
+Use the format: Merge remote-tracking branch 'origin/<branch>' into <target>
+
+## Evidence
+
+- Seen in commit: Merge remote-tracking branch 'origin/GP-6809_Dan_StaticMappingsInterface--SQUASHED'
+
+---
+id: ghidra-instinct-commit-format-short
+trigger: "When making a minor change or fix"
+confidence: 0.8
+domain: git
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Commit Format Short
+
+## Action
+
+Use a short, descriptive commit message (e.g., Minor help tweaks)
+
+## Evidence
+
+- Seen in commit: Minor help tweaks
+
+---
+id: ghidra-instinct-fix-typo-workflow
+trigger: "When a typo is discovered in code or documentation"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Fix Typo Workflow
+
+## Action
+
+Edit the file to correct the typo and commit with a message referencing the typo fix
+
+## Evidence
+
+- Workflow: fixing-typos-in-source-files
+- Files: Ghidra/Features/VersionTracking/src/main/java/ghidra/feature/vt/api/markuptype/VTMarkupType.java
+
+---
+id: ghidra-instinct-fix-test-workflow
+trigger: "When a test fails or needs updating due to code changes"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Fix Test Workflow
+
+## Action
+
+Edit the test file to fix the issue, commit the fix, and merge into the patch branch
+
+## Evidence
+
+- Workflow: test-fix-and-merge
+- Files: Ghidra/Features/SystemEmulation/src/test/java/ghidra/pcode/emu/sys/EmuAmd64SyscallUseropLibraryTest.java
+
+---
+id: ghidra-instinct-add-interface-workflow
+trigger: "When a new interface is needed or an existing service is refactored"
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Add Interface Workflow
+
+## Action
+
+Create or refactor interface/service Java files, update related implementations, commit, and merge
+
+## Evidence
+
+- Workflow: feature-refactor-or-interface-addition
+- Files: Ghidra/Debug/Debugger-api/src/main/java/ghidra/app/services/DebuggerStaticMappingService.java
+
+---
+id: ghidra-instinct-improve-compression-workflow
+trigger: "When compression or serialization performance, limits, or bugs need addressing"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Improve Compression Workflow
+
+## Action
+
+Edit Java files related to compression or serialization, update documentation, commit, and merge
+
+## Evidence
+
+- Workflow: compression-or-serialization-improvement
+- Files: Ghidra/Features/FileFormats/src/main/java/ghidra/file/formats/zlib/ZLIB.java
+
+---
+id: ghidra-instinct-merge-branch-workflow
+trigger: "When a feature or fix branch is ready to be integrated"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: rdp77/ghidra
+---
+
+# Ghidra Instinct Merge Branch Workflow
+
+## Action
+
+Merge the branch into main or patch, resolving conflicts and referencing the branch in the commit
+
+## Evidence
+
+- Workflow: merge-feature-or-fix-branch
+- Seen in commit: Merge remote-tracking branch 'origin/patch'
+
